@@ -15,8 +15,8 @@
 #include <string>
 #include <thread>
 
-// Shared between the main loop and the signal handler.
-// atomic prevents the compiler from caching the value in a register.
+// atomic gives well-defined behaviour for reads/writes shared between
+// the main loop and the signal handler. Without it, the access is UB.
 std::atomic<bool> g_stop{false};
 
 void handle_sigint(int) { g_stop.store(true); }

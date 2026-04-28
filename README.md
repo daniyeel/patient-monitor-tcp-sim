@@ -65,4 +65,3 @@ Each message is a single JSON object followed by a newline (`\n`), i.e. NDJSON:
 ## Environment
 
 Developed and tested on WSL2 (Ubuntu) on Windows 11.
-# patient-monitor-tcp-sim

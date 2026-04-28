@@ -1,6 +1,6 @@
 # patient-monitor-sim
 
-A small C++17 exercise simulating a bedside patient monitor streaming vitals over TCP to a central listener — built to explore POSIX socket programming and NDJSON message framing in a healthcare-connectivity context.
+A small C++ exercise simulating a bedside patient monitor streaming vitals over TCP to a central listener, built to explore TCP, POSIX socket programming and NDJSON message framing in a healthcare-connectivity context.
 
 ## What it does
 
@@ -54,8 +54,6 @@ Each message is a single JSON object followed by a newline (`\n`), i.e. NDJSON:
 | `sys` | integer | Systolic blood pressure, mmHg (90–160). 90: hypotension; 160: stage 2 hypertension |
 | `dia` | integer | Diastolic blood pressure, mmHg (60–100). 60: low diastolic; 100: hypertension threshold |
 
-NDJSON was chosen over length-prefixed binary because each message is self-describing and human-readable with no tooling. `nc`, `grep`, and `jq` all work out of the box. For a production system carrying high-frequency waveforms (ECG, PPG) the framing overhead would matter; for 1 Hz vitals it is negligible.
-
 ## Limitations
 
 - **Linux/WSL only** — uses POSIX sockets with `MSG_NOSIGNAL`; no Windows/Winsock path.
@@ -67,3 +65,4 @@ NDJSON was chosen over length-prefixed binary because each message is self-descr
 ## Environment
 
 Developed and tested on WSL2 (Ubuntu) on Windows 11.
+# patient-monitor-tcp-sim
